@@ -99,4 +99,28 @@
        }
      }
    }
+   
+   function throttle(func, ms) {
+      var isThrottled = false
+      var savedArgs, savedThis
+
+        function wrapper() {
+
+          if (isThrottled) {
+            savedArgs = arguments
+            savedThis = this
+            return
+          }
+          isThrottled = true
+          setTimeout(function() {
+            isThrottled = false
+            if (savedThis) {
+              wrapper.apply(savedThis, savedArgs)
+              savedArgs = savedThis = null
+            }
+          }, ms)
+          return func.apply(this, arguments);
+        }
+      return wrapper
+    }
 
