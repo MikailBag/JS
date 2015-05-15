@@ -88,3 +88,15 @@
           }, ms)
       }
     }
+    
+     function debounce(func, ms){
+     var debounced=false
+     return function(){
+       if (debounced == false){
+         debounced=true
+         setTimeout(function(){debounced=false}, ms)
+         return func.apply(this,arguments)
+       }
+     }
+   }
+
