@@ -1,4 +1,3 @@
-//CachingDecorator
 
  function getCacher(func) {
       var cache = {}
