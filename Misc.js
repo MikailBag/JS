@@ -7,3 +7,10 @@
         return cache[x]
       }
     }
+    
+     function getLogger(func, log) {
+      return function() {
+        log.push([].slice.call(arguments))
+        return func.apply(this, arguments)
+      }
+    }
